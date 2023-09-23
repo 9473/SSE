@@ -1,0 +1,31 @@
+ subroutine diagonalupdate()
+!---------------------------!
+ use configuration; implicit none
+
+ integer :: i,b,op
+ real(8) :: p,ran
+
+ do i=0,mm-1
+    op=opstring(i)
+    if (op==0) then       
+       b=min(int(ran()*nb)+1,nb)
+       if (spin(bsites(1,b))/=spin(bsites(2,b))) then
+          if (aprob>=dfloat(mm-nh).or.aprob>=ran()*(mm-nh)) then
+             opstring(i)=2*b
+             nh=nh+1 
+          endif
+       endif
+    elseif (mod(op,2)==0) then        
+       p=dprob*(mm-nh+1)
+       if (p>=1.d0.or.p>=ran()) then
+          opstring(i)=0
+          nh=nh-1
+       endif
+    else
+       b=op/2
+       spin(bsites(1,b))=-spin(bsites(1,b))
+       spin(bsites(2,b))=-spin(bsites(2,b))
+    endif
+ enddo
+
+ end subroutine diagonalupdate
