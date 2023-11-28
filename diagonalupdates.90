@@ -1,31 +1,67 @@
- subroutine diagonalupdate()
-!---------------------------!
- use configuration; implicit none
+subroutine diagonalupdate()
+    use configuration
+    implicit none
 
- integer :: i,b,op
- real(8) :: p,ran
+    !parameters:
+    integer :: i,b,op
+    real(8) :: p,ran
 
- do i=0,mm-1
-    op=opstring(i)
-    if (op==0) then       
-       b=min(int(ran()*nb)+1,nb)
-       if (spin(bsites(1,b))/=spin(bsites(2,b))) then
-          if (aprob>=dfloat(mm-nh).or.aprob>=ran()*(mm-nh)) then
-             opstring(i)=2*b
-             nh=nh+1 
-          endif
-       endif
-    elseif (mod(op,2)==0) then        
-       p=dprob*(mm-nh+1)
-       if (p>=1.d0.or.p>=ran()) then
-          opstring(i)=0
-          nh=nh-1
-       endif
-    else
-       b=op/2
-       spin(bsites(1,b))=-spin(bsites(1,b))
-       spin(bsites(2,b))=-spin(bsites(2,b))
-    endif
- enddo
+    !-------check bond type
+    !----if I, none do; if diag, none do; if off-diag, exchange
+    !----if I, change to diag, if diag, change to I
+    do i = 0,mm-1
+        op = opstring(i)
+        if (op==0) then !----I operator
+            b = min( int(ran()*nb)+1,nb ) !-----here insert a diag
+            if ( spin(bsites(1,b)) /= spin(bsites(2,b)) ) then !---only anti-paralleled can insert!
+                ! ran < aprob/(M-n),aprob/(M-n)>=1
+                if(aprob>=dfloat(mm-nh) .or. aprob>=ran()*(mm-nh)) then
+                    opstring(i) = 2*b
+                    nh = nh+1
+                endif
+            endif
+        elseif(mod(op,2)==0) then !----diag
+            !ran < dprob*(M-n+1), dprob*(M-n+1)>=1
+            p = dprob*(M-nh+1)
+            if(p>=1.0d0 .or. p>=ran()) then
+                opsrting(i) = 0
+                nh = nh-1
+            endif
+        else
+            b = op/2
+            spin(bsites(1,b)) = -spin(bsites(1,b))
+            spin(bsites(2,b)) = -spin(bsites(2,b))
+        endif
+    enddo
+end subroutine
 
- end subroutine diagonalupdate
+!--------check type of bond-----------------!
+! opstring(i) = op
+! opstring = 2b+a-1
+! index a = 1, diag; index a = 2, off-diag
+! a=1, op=even, diag; a=2, op=odd, off-diag
+! b=op/2, op=odd => op = 2b => b=op/2
+! b=op/2, op=even => op=2b => b=op/2
+!------------------------------!
+
+!--------bond and site--------------------!
+! bond(b) left = bond(b) = i
+! bond(b) right = bond(b)+1 = j
+! bond(b) up = bond(b) + lx = j
+! bond(b) down = bond(b) = i
+!--------------------------------!
+
+!------exchange I <=> diag--------------!
+!----insert diag
+! p = beta/2 * Nb / (M-n)
+!----delete diag
+! p = 2(M-n+1)/Nb/beta
+
+! aprob = nb*beta/2, dprob = 1/(1/2*beta*nb) restore in program main
+! ran < aprob/(M-n), ran < dprob*(M-n+1)
+!--------------------------------!
+
+!------check spin(i),spin(j)-------------!
+! (+1 -1)H(1,b)(+1 -1) = 1/2
+! (+1 -1)H(2,b)(-1 +1) = 1/2
+!-------------------------------!
