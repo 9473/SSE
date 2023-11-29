@@ -22,15 +22,15 @@ subroutine diagonalupdate()
             endif
         elseif(mod(op,2)==0) then !----diag
             !ran < dprob*(M-n+1), dprob*(M-n+1)>=1
-            p = dprob*(M-nh+1)
-            if(p>=1.0d0 .or. p>=ran()) then
-                opsrting(i) = 0
-                nh = nh-1
+            p = dprob*(mm-nh+1)
+            if(p>=1.d0 .or. p>=ran()) then
+                opstring(i) = 0
+                nh=nh-1
             endif
         else
-            b = op/2
-            spin(bsites(1,b)) = -spin(bsites(1,b))
-            spin(bsites(2,b)) = -spin(bsites(2,b))
+            b=op/2
+            spin(bsites(1,b))=-spin(bsites(1,b))
+            spin(bsites(2,b))=-spin(bsites(2,b))
         endif
     enddo
 end subroutine
