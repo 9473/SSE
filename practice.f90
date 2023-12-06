@@ -84,7 +84,8 @@ subroutine diagonalupdate()
 
     !parameters:
     integer :: i,b,op
-    real(8) :: p,ran
+    real(8) :: p
+    real(8),external :: ran
 
     !-------check bond type
     !----if I, none do; if diag, none do; if off-diag, exchange
@@ -153,7 +154,7 @@ subroutine loopupdate()
 
     !parameters:
     integer :: i,n,l,b,op,s1,s2,v0,v1,v2
-    real(8) :: ran
+    real(8),external :: ran
 
     frstspinop = -1
     lastspinop = -1
@@ -332,7 +333,7 @@ subroutine initconfig()
     implicit none
 
     integer :: i
-    real(8) :: ran
+    real(8),external :: ran
 
     allocate(spin(nn))
     do i=1,nn
