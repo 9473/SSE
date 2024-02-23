@@ -1,5 +1,5 @@
 # 1D Transverse field Ising model
-AFM Hamiltonian:  
+FM Hamiltonian:  
 $$H=-J\sum(\sigma^z_{i}\sigma^z_{j})-h\sum\sigma^x_{i}$$  
 construct the element:  
 $$H_{0,0}=I$$
