@@ -135,7 +135,7 @@ $$
 C ={\langle n^2 \rangle-\langle n \rangle^2 -\langle n \rangle}
 $$
 
-$E_b$可以看作每个键的平均能量，每个键的平均能量有限， $\langle n\rangle \propto \beta N$ ，并且，当低温下，比热 $C\to 0$,  $\langle n^2 \rangle-\langle n \rangle^2 -\langle n \rangle \to 0,\langle n^2 \rangle-\langle n \rangle^2\to \langle n \rangle$，你就会发现 $n$ 的分布展宽有限， $\sqrt{\langle n^2 \rangle-\langle n \rangle^2} \approx \sqrt{\langle n \rangle} \propto (\beta N)^{1/2}$ . So, we can imagine that, **$n$ has an expectation depends on size of system and far of position zero(position zero!!!) n has very small probability.**
+$E_b$ 可以看作每个键的平均能量，每个键的平均能量有限， $\langle n\rangle \propto \beta N$ ，并且，当低温下，比热 $C\to 0$,  $\langle n^2 \rangle-\langle n \rangle^2 -\langle n \rangle \to 0,\langle n^2 \rangle-\langle n \rangle^2\to \langle n \rangle$，你就会发现 $n$ 的分布展宽有限， $\sqrt{\langle n^2 \rangle-\langle n \rangle^2} \approx \sqrt{\langle n \rangle} \propto (\beta N)^{1/2}$ . So, we can imagine that, **$n$ has an expectation depends on size of system and far of position zero(position zero!!!) n has very small probability.**
 
 因此，不仅是计算成本上的考虑，还考虑到 $n$ 的实际分布，我们可以做截断。
 
@@ -170,7 +170,7 @@ $$
 
 我们发现，这样定义的了权重之后，配分函数相当于对各权重进行求和，那么配分函数的差异是完全可以体现在$W$上的  
 
-截断到了$M$的话，  
+截断到了 $M$ 的话，  
 
 $$
 Z =\sum_{i,n}^MW_i(n), W_i(n) =\frac{(-\beta)^n(M-n)!}{M!}\langle \alpha|\prod_{i=1}^n H_{b_i}|\alpha \rangle
