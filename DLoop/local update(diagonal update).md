@@ -1,4 +1,5 @@
 # Directed Loop Algorithm
+（这是XXZ model + 横场 + 纵场）  
 
 矩阵元的权重为  
 
