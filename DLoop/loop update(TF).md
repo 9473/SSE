@@ -32,7 +32,7 @@ $$
 
 ```fortran
  wxo = gamma
- wxd = gamma/2.d0
+ wxd = gamma !取任意权重，但最好不要太小，否则local更新插不进去
  ao = (wxo*wxo)/(wxo + wxd) !非对角site 反弹
  bo = (wxo*wxd)/(wxo + wxd) !非对角site 停止
  ad = (wxd*wxd)/(wxo + wxd) !对角site 反弹
@@ -51,3 +51,5 @@ $$
 
 #### 在loop update中使用概率  
 当遇到一个site算符，对其进行判断
+
+```fortran
