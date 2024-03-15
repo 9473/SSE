@@ -18,7 +18,7 @@ Z_A^n(\lambda) = \sum_{B \text{ in }A} \lambda^{N_B} (1-\lambda)^{N_A-N_B} Z_B^n
 $$
 
 
-我们设函数 $g(\lambda,N_B) = \lambda^{N_B} (1-\lambda)^{N_A-N_B}$ , 于是 $Z_A^n(\lambda) = \sum  g(\lambda,N_B) Z_B^n$.   B 是我们在 subsystem A 中挖的一个小部分.  
+我们设函数 $g(\lambda,N_B) = \lambda^{N_B} (1-\lambda)^{N_A-N_B}$ , 于是 $Z_A^n(\lambda) = \sum  g(\lambda,N_B) Z_B^n$.   B 是我们在 subsystem A 中挖的一个小部分. (这个说法可能有点不对，具体想象应该是 B是A与环境的glued geometry) 
 
 
 $$
@@ -38,7 +38,7 @@ S^n =\frac{1}{1-n} \int^1_0 d\lambda \frac{\partial \ln Z^n_A(\lambda)}{\partial
 $$
 
 
-这是因为  $Z^n_{\emptyset} = Z^n(\lambda = 0)$ 可以看成是 $Z^n_A(\lambda)$ 的一个特殊情况,  当 $\lambda = 1$ 时相当于 此时是一个 full subsystem A.  B 已经把 A 占满了.
+这是因为  $Z^n_{\emptyset} = Z^n(\lambda = 0)$ 可以看成是 $Z^n_A(\lambda)$ 的一个特殊情况,  当 $\lambda = 1$ 时相当于 subsystem A 全部粘在 环境 $\bar{A}$ 上.  
 
 
 
