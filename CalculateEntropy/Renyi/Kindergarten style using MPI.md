@@ -19,7 +19,6 @@ call MPI_Comm_rank 用于获取当前进程的排名（或称为进程号）, ie
 
 在主程序的最后, deallocate的后面结束MPI进程:  
 ```fortran
-call mpi_barrier(mpi_comm_world,ierr)
 call MPI_FINALIZE(ierr)
 ```
 
@@ -39,4 +38,4 @@ N 就是你选择的核心数量
 
 ##### reference:
 
-Dongxu Liu, Siyi Yang
+Dongxu Liu, Siyi Yang's note
