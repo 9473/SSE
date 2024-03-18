@@ -1,3 +1,5 @@
+更详细的解释见该网页 https://tourmaline-sunscreen-c8f.notion.site/the-measurement-of-Renyi-entropy-85674707205a468091e7887e240440ee
+
 非平衡方法测量 Rényi 纠缠熵
 
 Definition of n-th Rényi entropy:
@@ -138,5 +140,3 @@ $$
 因此，我们现在是对 $\frac{g(\lambda_k,N_B^k)}{g(\lambda_{k-1},N_B^{k-1})}$ 进行采样做平均.
 
 
-
-(2024.3.15) 我现在仍然对 Jarzynski 等式和熵对 $t$ 的积分式子之间的联系有迷惑.
