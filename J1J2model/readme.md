@@ -28,8 +28,8 @@ $p_{ist} = \frac{\beta N_b \cdot 1/2}{M-n}$.  可以认为是插入 $J_1$ 对角
 
 ```fortran
 ! in main:
-aprob=0.5d0*beta*nb
-dprob=1.d0/(0.5d0*beta*nb)
+aprob=0.5d0*beta*nb*jr
+dprob=1.d0/aprob
 !提前定义好全局变量 jr
 
 !-----------------!
