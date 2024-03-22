@@ -9,15 +9,22 @@ $$
 H_{diag,J_2} = \frac{J_2}{4}-J_2S^zS^z
 $$
 
-而且这种方式会使得对角bond翻转到各自的非对角bond的时候权重不变，因此可以loop翻转前后权重不变.
+而且这种方式会使得对角bond翻转到各自的非对角bond的时候权重不变，因此可以loop翻转前后权重不变.  
+
+------
+
+以下更新方式符合在x轴上奇数键插入J1，在偶数键上插入J2，其余键（竖着的键）均插入J2.
+<img width="253" alt="image" src="https://github.com/9473/SSE/assets/59651278/c37c0fb1-0bf3-4a83-86d5-40c62f0a2e8c">
+
+此计数方式更详细见SSE教程. 可以看到，横键的范围为 1至nn, 竖键的范围为 nn+1至nb(其中nb=2nn)
 
 ### 对角更新
 
-Set $J_1 = 1$,  $J_2 = J_1 g_c = g_c$. 那么对角更新的概率:
+Set $J_1 = 1$,  $jr = \frac{J_2}{J_1}$. 那么对角更新的概率:
 
-$p_{ist} = \frac{\beta N_b \cdot 1/2}{M-n}$.  可以认为是插入 $J_1$ 对角bond的概率，那么插入 $J_2$ 对角bond的概率可以很简单地认为： $p_{ist} = \frac{\beta N_b \cdot J_2/2}{M-n}$.
+$p_{ist} = \frac{\beta N_b \cdot 1/2}{M-n}$.  可以认为是插入 $J_1$ 对角bond的概率，那么插入 $J_2$ 对角bond的概率可以很简单地认为： $p_{ist} = \frac{\beta N_b \cdot 1/2}{M-n}*J_r$.  在这样的情况下，插入 $J_1$ 对角bond的概率可以认为是 $p_{ist J2}/jr$.
 
- 相应的，删去算符在 $J_2$ bond的情况下也要做相应的 $p/J_2$ 的修改。
+ 相应的，删去算符在 $J_2$ bond的情况下也要做相应的 $p*J_2$ 的修改。
 
 ```fortran
 ! in main:
@@ -38,8 +45,8 @@ subroutine diagonalupdate()
     if (op==0) then       
        b=min(int(ran()*nb)+1,nb)
        if (spin(bsites(1,b))/=spin(bsites(2,b))) then
-	  p=aprob
-	    if (b<=nn.and.mod((b-1)/lx,2)==0) p=p*jr
+	  p=aprob  !默认插入J2
+	    if (b<=nn.and.mod((b-1),2)==0) p=p/jr !表明横轴奇数键上插入J1
           if (p>=dfloat(mm-nh).or.p>=ran()*(mm-nh)) then
              opstring(i)=2*b
              nh=nh+1 
@@ -48,7 +55,7 @@ subroutine diagonalupdate()
     elseif (mod(op,2)==0) then  !说明这里对角算符的计数方式是2的偶数倍
        b=op/2        
        p=dprob*(mm-nh+1)
-		if (b<=nn.and.mod((b-1)/lx,2)==0) p=p/jr
+		if (b<=nn.and.mod((b-1),2)==0) p=p*jr
        if (p>=1.d0.or.p>=ran()) then
           opstring(i)=0
           nh=nh-1
@@ -182,3 +189,8 @@ subroutine makelattice()
  enddo
  enddo
 end subroutine makelattice
+
+
+------
+
+另外一种处理J1J2 model的方式是在造格子上对所属J1和J2的格点进行改造，但在这里就不展示了。
