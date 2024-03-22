@@ -24,7 +24,7 @@ Set $J_1 = 1$,  $jr = \frac{J_2}{J_1}$. 那么对角更新的概率:
 
 $p_{ist} = \frac{\beta N_b \cdot 1/2}{M-n}$.  可以认为是插入 $J_1$ 对角bond的概率，那么插入 $J_2$ 对角bond的概率可以很简单地认为： $p_{ist} = \frac{\beta N_b \cdot 1/2}{M-n}*J_r$.  在这样的情况下，插入 $J_1$ 对角bond的概率可以认为是 $p_{ist J2}/jr$.
 
- 相应的，删去算符在 $J_2$ bond的情况下也要做相应的 $p*J_2$ 的修改。
+ 相应的，删去算符在 $J_1$ bond的情况下也要做相应的 $p*J_2$ 的修改。
 
 ```fortran
 ! in main:
