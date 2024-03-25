@@ -12,7 +12,7 @@ $$
 
 其中 $Z^n_{\emptyset}$ 表示的是 n个replica 的整个系统的配分函数，而 $Z^n$ 表示的 n个replica 的 subsystem A 的配分函数。  
 
-非平衡的会引入一个参数 $\lambda$ . 即,  
+引入一个虚过程，即引入一个参数 $\lambda$ . 即,  
 
 
 $$
@@ -20,8 +20,7 @@ Z_A^n(\lambda) = \sum_{B \text{ in }A} \lambda^{N_B} (1-\lambda)^{N_A-N_B} Z_B^n
 $$
 
 
-我们设函数 $g(\lambda,N_B) = \lambda^{N_B} (1-\lambda)^{N_A-N_B}$ , 于是 $Z_A^n(\lambda) = \sum  g(\lambda,N_B) Z_B^n$.   B 是我们在 subsystem A 中挖的一个小部分. (这个说法可能有点不对，具体想象应该是 B是A与环境的glued geometry) 
-
+我们设函数 $g(\lambda,N_B) = \lambda^{N_B} (1-\lambda)^{N_A-N_B}$ , 于是 $Z_A^n(\lambda) = \sum  g(\lambda,N_B) Z_B^n$.   B是在子系统A中的glued部分. 由它控制着“裤裆”中有哪些部分是真正连着的。
 
 $$
 Z^n = e^{-\beta [-\frac{1}{\beta} \ln (g  + Z^n_B)]} = e^{-\beta W^n}
