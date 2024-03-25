@@ -90,7 +90,7 @@ belongA(cutx+1+(cuty+1*Ly))=1
 inversA(cutx+1+(cuty+1*Ly))=alx+1
 ```
 
-显然，这种计数方式与bsites的标记一致.  但是只标记了从cutx+1 to alx, 从cuty to aly-1的部分，不知道为什么像是与实际上应该标记的cutx-alx,cuty-aly有各一排的区别.
+显然，这种计数方式与bsites的标记一致.  但是只标记了从cutx+1 to alx, 从cuty to aly-1的部分  
 
 cutsites就像是一个数组的Index用来储存cut那一部分的点的坐标, 其坐标计数方式与bsites一模一样.  而这个坐标必须通过cutsites(index)来获取，这个index可不再是bsites(1,b)的那个b(b的前n个与i=1~nn同步)，而是cut部分的<u>第几个点</u>
 
