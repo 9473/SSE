@@ -45,52 +45,38 @@ allocate(joinorsplit(al))
 
 
 
-从 cutx 处横向出发.
+从 cutx 处横向出发:  cutx+1, cutx+2, .... cutx+alx
 
-cutx+1, cutx+2, .... cutx+alx
+从 cuty 纵向出发: Cuty(就在cutx那一排), cuty+1, cuty+2, ... cuty+aly-1.
 
-从 cuty 纵向出发
-
-Cuty(就在cutx那一排), cuty+1, cuty+2, ... cuty+aly-1.
+这样的方式是对的，因为当y=0时，遍历l格点将会处于x的第一排. 而y = ytot-1时，y*lx + l就会遍历x的最后一排. 
 
 ```bash
-s1
-s1
-s1
-s1
-s1(s) s s s s
+aly-1
+aly-2
+..
+y=1
+y=0(x=1) x=2 .. x=alx-1 x=alx
 ```
 
-第一个点:
+显然，这种计数方式与bsites的标记一致.   也可以用下面这种形式来表示，只是周期性边界条件的写法要注意一下.
 
-```bash
-(cutx+1,cuty) 计数方式: cutx+1+(cuty*Lx)
-cutsites(1)=cutx+1+(cuty*Lx)
-belongA(cutx+1+(cuty*Lx))=1
-inversA(cutx+1+(cuty*Lx))=1
+```fortran
+do cy = 0,aly-1
+do cx = 0,alx-1
+	s = 1+cx + cy*lx !stars from 0
+	
+	!周期性边界条件
+	
+	cutsites(flag) = s
+	inversA(s) = flag
+  belongA(s) = 1
+  flag = flag+1
+ 
+enddo
+enddo
 ```
 
-第二个点：
-
-```bash
-(cutx+2,cuty) 计数方式: cutx+2+(cuty*Lx)
-cutsites(2)=cutx+2+(cuty*Lx)
-belongA(cutx+2+(cuty*Lx))=1
-inversA(cutx+2+(cuty*Lx))=2
-```
-
-... 
-
-第 alx+1 个点:
-
-```bash
-(cutx+1,cuty+1) 计数方式: cutx+1+(cuty+1*Ly)
-cutsites(alx+1)=cutx+1+(cuty+1*Ly)
-belongA(cutx+1+(cuty+1*Ly))=1
-inversA(cutx+1+(cuty+1*Ly))=alx+1
-```
-
-显然，这种计数方式与bsites的标记一致.  但是只标记了从cutx+1 to alx, 从cuty to aly-1的部分  
 
 cutsites就像是一个数组的Index用来储存cut那一部分的点的坐标, 其坐标计数方式与bsites一模一样.  而这个坐标必须通过cutsites(index)来获取，这个index可不再是bsites(1,b)的那个b(b的前n个与i=1~nn同步)，而是cut部分的<u>第几个点</u>
 
