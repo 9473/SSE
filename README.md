@@ -1,7 +1,7 @@
 # SSE
 stochastic series expansion
 link：https://tourmaline-sunscreen-c8f.notion.site/SSE-Stochastic-Series-Expans-QMC-209818ff11cc4bbbb8b0067c1830c130
-more ditailed explanation
+more ditailed explanation(不过还在细化更新中）
 
 #### Pre work:
 
@@ -196,7 +196,7 @@ $$
 
 对于[0,0] -> [1,b] 这个过程，总是会有 $1/N_b$ 的概率。在 Insert 这一情况中，这个过程作为正过程，因此 $\frac{[1,b] \to [0,0]}{[0,0] \to [1,b]} =N_b$ ；在 Delete 中这一过程作为逆过程，因此 $\frac{[0,0] \to [1,b]}{[1,b] \to [0,0]} = 1/N_b$ .
 
-这一不均匀终究还是单位算符的操作和对角算符的操作不对成所导致的。  
+这一不均匀终究还是单位算符的操作和对角算符的操作不对称所导致的，推导细致平衡时不要遗漏考虑选择概率。  
 
 $$
 p = \frac{W_b}{W_a}=\frac{\frac{(-\beta)^{(n+1)}(M-n-1)!}{M!}(1/2)}{\frac{(-\beta)^n(M-n)!}{M!}} = \frac{\beta}{2}\frac{1}{(M-n)}
