@@ -87,7 +87,7 @@ $$
 $\frac{(-\beta)^{(n-1)}}{(n-1)!} = \frac{\frac{(-\beta)^{n}}{-\beta}}{(n-1)!\cdot n}\frac{n}{1} = \frac{n}{-\beta}\frac{(-\beta)^n}{n!} \to$  
 
 $$
-\langle H \rangle = \langle E \rangle =\frac{\sum_\alpha \sum_{n=0}^\infty \frac{n}{-\beta}\frac{(-\beta)^n}{n!} \bra{\alpha}H^n\ket{\alpha}}{ \sum_\alpha \sum _{n=0}^\infty \frac{(-\beta)^n}{n!}\bra{\alpha} H^n \ket{\alpha}}
+\langle H \rangle = \langle E \rangle =\frac{\sum_\alpha \sum_{n=0}^\infty \frac{n}{-\beta}\frac{(-\beta)^n}{n!} \bra{\alpha}H^n\ket{\alpha}}{ \sum_\alpha \sum_{n=0}^\infty \frac{(-\beta)^n}{n!}\bra{\alpha} H^n \ket{\alpha}}
 $$  
 
 $$
