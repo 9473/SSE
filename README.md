@@ -1,7 +1,7 @@
 # SSE
 stochastic series expansion
 
-others note: https://web.mit.edu/8.334/www/grades/projects/projects25/ChristopheTong.pdf?utm_source=chatgpt.com
+others note: https://web.mit.edu/8.334/www/grades/projects/projects25/ChristopheTong.pdf
 
 my Chinese note, link：https://tourmaline-sunscreen-c8f.notion.site/SSE-Stochastic-Series-Expans-QMC-209818ff11cc4bbbb8b0067c1830c130
 more ditailed explanation(不过还在细化更新中）
